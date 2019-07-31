@@ -1,28 +1,55 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <p
+      :style="greetingStyle"
+      @click.exact="changeColor"
+      @click.alt="changeFontFamily"
+    >{{ greeting }}</p>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
-  name: 'app',
-  components: {
-    HelloWorld
+  data() {
+    return {
+      greeting: "Hey there",
+      greetingStyle: {
+        color: "red",
+        fontFamily: "Avenir"
+      }
+    };
+  },
+  methods: {
+    changeColor() {
+      var letters = "0123456789ABCDEF";
+      var color = "#";
+      for (var i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+      }
+
+      this.greetingStyle.color = color;
+    }
   }
-}
+};
 </script>
 
 <style>
+body {
+  height: 90vh;
+}
+
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  height: inherit;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+p {
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  font-size: 40px;
+  cursor: pointer;
 }
 </style>
