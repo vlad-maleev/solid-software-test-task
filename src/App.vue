@@ -34,8 +34,8 @@ export default {
     return {
       greeting: "Hey there",
       greetingStyle: {
-        color: "red",
-        fontFamily: "Avenir"
+        color: "",
+        fontFamily: ""
       }
     };
   },
@@ -63,6 +63,10 @@ export default {
       this.greetingStyle.fontFamily =
         fontFamilies[Math.floor(Math.random() * fontFamilies.length)];
     }
+  },
+  beforeMount() {
+    this.changeColor(),
+    this.changeFontFamily() 
   }
 };
 </script>
@@ -87,6 +91,7 @@ body {
 .greeting p {
   font-size: 96px;
   cursor: pointer;
+  text-align: center;
 }
 
 .infoContainer {
