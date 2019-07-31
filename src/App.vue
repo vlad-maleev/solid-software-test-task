@@ -21,21 +21,30 @@ export default {
   },
   methods: {
     changeColor() {
-      var letters = "0123456789ABCDEF";
-      var color = "#";
-      for (var i = 0; i < 6; i++) {
+      let letters = "0123456789ABCDEF";
+      let color = "#";
+
+      for (let i = 0; i < 6; i++) {
         color += letters[Math.floor(Math.random() * 16)];
       }
 
       this.greetingStyle.color = color;
+    },
+    changeFontFamily() {
+      let fontFamilies = ['Audiowide', 'Gloria Hallelujah', 'Lobster Two', 'Miniver', 'Oswald', 'Saira Stencil One'];
+
+      this.greetingStyle.fontFamily = fontFamilies[Math.floor(Math.random() * fontFamilies.length)];
     }
   }
 };
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/css?family=Audiowide|Gloria+Hallelujah|Lobster+Two|Miniver|Oswald|Saira+Stencil+One&display=swap');
+
 body {
   height: 90vh;
+  background-color: azure
 }
 
 #app {
@@ -48,7 +57,6 @@ body {
 }
 
 p {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
   font-size: 40px;
   cursor: pointer;
 }
